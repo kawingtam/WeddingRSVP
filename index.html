@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Wedding RSVP | Kathy & Kanna</title>
+  </head>
+
+<body>
+  <nav class="topbar" aria-label="Wedding website navigation">
+    <div class="topbar-inner">
+      <div class="nav-links">
+        <a href="#details">Details</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#rsvp">RSVP</a>
+        <a href="#qa">Q&A</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-card">
+      <p class="eyebrow">Together with our families</p>
+      <h1>
+        Kathy
+        <span class="and">&</span>
+        Kanna
+      </h1>
+      <p class="date-line">October 25, 2026</p>
+      <p class="location-line">Please join us for a joyful celebration.</p>
+
+      <div class="button-row">
+        <a class="btn" href="rsvp.html">RSVP Now</a>
+        <a class="btn secondary" href="#details">View Details</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="details" class="card-section">
+      <h2>Wedding Details</h2>
+      <p class="section-intro">
+        We are so excited to celebrate with you.
+        <br>More details will be shared as the day gets closer.
+      </p>
+
+      <div class="grid">
+        <div class="detail-card">
+          <h3>Date</h3>
+          <p>Sunday, October 25, 2026</p>
+        </div>
+
+        <div class="detail-card">
+          <h3>Location</h3>
+          <p>Venue Name<br>City, California</p>
+        </div>
+
+        <div class="detail-card">
+          <h3>Dress Code</h3>
+          <p>Garden formal / semi-formal<br>Blue tones welcome</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule" class="card-section">
+      <h2>Schedule</h2>
+      <p class="section-intro">Final timing may be updated closer to the wedding.</p>
+
+      <div class="schedule">
+        <div class="schedule-item">
+          <span class="time">Evening</span>
+          <strong>Reception</strong>
+          <p>Dinner, celebration, and memories with our guests.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp" class="card-section">
+      <h2>RSVP</h2>
+      <p class="section-intro">
+        Please let us know by September 25, 2026.
+      </p>
+
+      <div class="button-row">
+        <a class="btn" href="rsvp.html">Start RSVP</a>
+      </div>
+    </section>
+
+    <section id="qa" class="qa-section card-section">
+      <div class="qa-layout">
+        <div class="qa-copy">
+          <p class="qa-label">FAQ</p>
+          <h2>Frequently Asked Questions</h2>
+          <p>
+            We compiled a few helpful answers for our wedding day. More details will be added as we get closer to the celebration.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>
+              <span>When should I RSVP by?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <p>Please RSVP by September 25, 2026 so we can finalize our guest count.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>What is the dress code?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <p>Garden formal or semi-formal. Blue tones are welcome, but not required.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Can I bring a guest?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <p>Please refer to the names listed on your invitation. If you have questions, feel free to contact us.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Will there be parking?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <p>Parking details will be shared closer to the wedding date.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Are children invited?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <p>Please check your invitation for the guests included in your RSVP.</p>
+          </details>
+        </div>
+      </div>
+
+      <div class="qa-contact">
+        <h3>Still have questions?</h3>
+        <p>Please contact us, we are happy to help.</p>
+        <a class="contact-btn" href="mailto:your-email@example.com">Contact us</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>With love and gratitude</div>
+    <div class="small">Kathy & Kanna · October 25, 2026</div>
+
+    <p class="developer-credit">
+      <a href="https://kawingtam.github.io/" target="_blank" rel="noopener noreferrer">
+        Developer Portfolio
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-item').forEach((item) => {
+      item.addEventListener('toggle', () => {
+        if (item.open) {
+          document.querySelectorAll('.faq-item').forEach((otherItem) => {
+            if (otherItem !== item) otherItem.removeAttribute('open');
+          });
+        }
+      });
+    });
+  </script>
+
+  <script src="js/index.js"></script>
+  <script src="js/rsvp.js"></script>
+</body>
+</html>

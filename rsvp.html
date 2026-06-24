@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>RSVP | Kathy & Kanna</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="rsvp-page">
+  <nav class="topbar" aria-label="Wedding website navigation">
+    <div class="topbar-inner">
+      <div class="nav-links">
+        <a href="index.html">Return Home</a>
+        <a href="index.html#details">Details</a>
+        <a href="index.html#schedule">Schedule</a>
+        <a href="index.html#qa">Q&A</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-wrap">
+    <div class="rsvp-shell">
+      <header class="rsvp-header">
+        <p class="rsvp-names">
+          Kathy <span class="rsvp-and">&</span> Kanna
+        </p>
+        <h1>RSVP</h1>
+      </header>
+      <section class="rsvp-card" aria-label="Interactive wedding RSVP form">
+        <div class="progress-area" aria-label="RSVP progress">
+          <div class="progress-meta">
+            <span id="step-label">Step 1 of 9</span>
+            <span id="step-percent">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <form id="interactive-rsvp" name="wedding-rsvp" method="POST" netlify-honeypot="bot-field" data-netlify="true" novalidate>
+          <input type="hidden" name="form-name" value="wedding-rsvp" />
+          <input type="hidden" id="guest-names-hidden" name="guest_names" value="" />
+          <p style="display:none;">
+            <label>Do not fill this out: <input name="bot-field" /></label>
+          </p>
+
+          <div class="notice" id="notice" role="alert"></div>
+
+          <div class="rsvp-step active" id="step-name">
+            <span class="question-label">First question</span>
+            <h2 class="question-title">What is your full name?</h2>
+            <p class="question-help">Please enter your name as it appears on your invitation.</p>
+
+            <label class="field-label" for="full-name">Full name</label>
+            <input id="full-name" name="full_name" type="text" placeholder="Your full name" autocomplete="name" data-required="always" />
+          </div>
+
+          <div class="rsvp-step" id="step-email">
+            <span class="question-label">Contact</span>
+            <h2 class="question-title">What is your email?</h2>
+            <p class="question-help">We will only use this if we need to confirm wedding details with you.</p>
+
+            <label class="field-label" for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="name@example.com" autocomplete="email" data-required="always" />
+          </div>
+
+          <div class="rsvp-step" id="step-attendance">
+            <span class="question-label">Attendance</span>
+            <h2 class="question-title">Will you be joining us?</h2>
+            <p class="question-help">Your answer will decide which questions appear next.</p>
+
+            <div class="choice-grid" role="radiogroup" aria-label="Will you attend?">
+              <label class="choice-card">
+                <input type="radio" name="attendance" value="Joyfully accepts" data-required="always" />
+                <span>Joyfully accepts</span>
+              </label>
+
+              <label class="choice-card">
+                <input type="radio" name="attendance" value="Regretfully declines" data-required="always" />
+                <span>Regretfully declines</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="rsvp-step" id="step-accept-animation">
+            <div class="outcome-card accept" aria-label="Happy acceptance message">
+              <span class="sparkle one"></span>
+              <span class="sparkle two"></span>
+              <span class="sparkle three"></span>
+              <span class="sparkle four"></span>
+
+              <div class="outcome-content">
+                <div class="outcome-icon">🩵</div>
+                <h2>Yay, see you there!</h2>
+                <p>We are so excited to celebrate with you. Just a few quick details left.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rsvp-step" id="step-decline-animation">
+            <div class="outcome-card decline" aria-label="Decline message">
+              <span class="sparkle one"></span>
+              <span class="sparkle two"></span>
+              <span class="sparkle three"></span>
+              <span class="sparkle four"></span>
+
+              <div class="outcome-content">
+                <div class="outcome-icon">💙</div>
+                <h2>We will miss you.</h2>
+                <p>Thank you for letting us know. You can leave us a sweet note before submitting.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rsvp-step" id="step-guest-count">
+            <span class="question-label">Guest count</span>
+            <h2 class="question-title">How many guests are attending?</h2>
+            <p class="question-help">Please include yourself in the number.</p>
+
+            <label class="field-label" for="guest-count">Number attending</label>
+            <select id="guest-count" name="guest_count" data-required="accept">
+              <option value="">Select one</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+
+          <div class="rsvp-step" id="step-guest-names">
+            <span class="question-label">Guest names</span>
+            <h2 class="question-title">Who will be attending?</h2>
+            <p class="question-help" id="guest-names-help">Please enter one name per box.</p>
+
+            <div class="guest-name-fields" id="guest-name-fields">
+              <div class="guest-name-field" data-guest-field="1">
+                <label class="field-label" for="guest-1">Guest 1</label>
+                <input id="guest-1" name="guest_1" type="text" placeholder="Guest 1 full name" data-required="accept" disabled />
+              </div>
+
+              <div class="guest-name-field" data-guest-field="2">
+                <label class="field-label" for="guest-2">Guest 2</label>
+                <input id="guest-2" name="guest_2" type="text" placeholder="Guest 2 full name" data-required="accept" disabled />
+              </div>
+
+              <div class="guest-name-field" data-guest-field="3">
+                <label class="field-label" for="guest-3">Guest 3</label>
+                <input id="guest-3" name="guest_3" type="text" placeholder="Guest 3 full name" data-required="accept" disabled />
+              </div>
+
+              <div class="guest-name-field" data-guest-field="4">
+                <label class="field-label" for="guest-4">Guest 4</label>
+                <input id="guest-4" name="guest_4" type="text" placeholder="Guest 4 full name" data-required="accept" disabled />
+              </div>
+            </div>
+          </div>
+
+          <div class="rsvp-step" id="step-dietary">
+            <span class="question-label">Dietary needs</span>
+            <h2 class="question-title">Any allergies or dietary restrictions?</h2>
+            <p class="question-help">Choose the closest option. Select “Other” if you need to explain more.</p>
+
+            <label class="field-label" for="dietary-option">Allergy or dietary option</label>
+            <select id="dietary-option" name="dietary_option">
+              <option value="None">None</option>
+              <option>Vegetarian</option>
+              <option>Vegan</option>
+              <option>Gluten-free</option>
+              <option>Dairy-free</option>
+              <option>Nut allergy</option>
+              <option>Shellfish allergy</option>
+              <option>No beef</option>
+              <option>No pork</option>
+              <option>Other</option>
+            </select>
+
+            <div class="dietary-other" id="dietary-other-wrap">
+              <label class="field-label" for="dietary-other">Other details</label>
+              <input id="dietary-other" name="dietary_other" type="text" placeholder="Please briefly describe." disabled />
+            </div>
+          </div>
+
+          <div class="rsvp-step" id="step-message">
+            <span class="question-label">Final note</span>
+            <h2 class="question-title">Would you like to leave us a message?</h2>
+            <p class="question-help">You can also include a song request for the reception.</p>
+
+            <label class="field-label" for="message">Message or song request</label>
+            <textarea id="message" name="message" maxlength="180" placeholder="Leave us a note or request a song."></textarea>
+          </div>
+
+          <div class="rsvp-step" id="step-review">
+            <span class="question-label">Review</span>
+            <h2 class="question-title">Please review your RSVP.</h2>
+            <p class="question-help">Use Back if you want to edit anything.</p>
+
+            <div class="review-box" id="review-box"></div>
+          </div>
+
+          <div class="rsvp-step" id="step-thank-you">
+            <div class="outcome-card accept" aria-label="Thank you message">
+              <span class="sparkle one"></span>
+              <span class="sparkle two"></span>
+              <span class="sparkle three"></span>
+              <span class="sparkle four"></span>
+
+              <div class="outcome-content">
+                <div class="outcome-icon">🩵</div>
+                <h2>Thank you!</h2>
+                <p>Your RSVP has been recorded. We are grateful for your response.</p>
+              </div>
+            </div>
+
+            <div class="button-row thank-you-actions">
+              <a class="btn secondary" href="index.html">Back to Wedding Site</a>
+            </div>
+          </div>
+
+          <div class="button-row rsvp-button-row" id="form-buttons">
+            <button class="btn secondary hidden" type="button" id="back-btn">Back</button>
+            <button class="btn" type="button" id="next-btn">Next</button>
+            <button class="btn" type="submit" id="submit-btn" style="display:none;">Submit</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+  
+
+  <script src="js/rsvp.js"></script>
+</body>
+</html>
