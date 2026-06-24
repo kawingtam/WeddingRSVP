@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding RSVP</title>
+  <style>
+    :root {
+      --ink-blue: #1F5A93;
+      --powder-blue: #B8CFE3;
+      --dusty-blue: #7D97AA;
+      --soft-white: #F8FAF7;
+      --fresh-green: #7FA06B;
+      --champagne: #B6A36A;
+      --text: #263849;
+      --muted: #6f7f8f;
+      --card: rgba(255, 255, 255, 0.86);
+      --shadow: 0 22px 60px rgba(31, 90, 147, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(184, 207, 227, 0.35), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, var(--soft-white) 45%, #edf5fb 100%);
+      line-height: 1.7;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      padding: 16px 20px;
+      background: rgba(248, 250, 247, 0.86);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184, 207, 227, 0.55);
+      font-family: Arial, sans-serif;
+      font-size: 0.86rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .topbar a {
+      color: var(--ink-blue);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .topbar a:hover {
+      color: var(--champagne);
+    }
+
+    .hero {
+      min-height: 860px;
+      padding: 90px 24px 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: min(1040px, 94vw) auto;
+    }
+
+    .hero-card {
+      width: min(720px, 92vw);
+      margin-top: 135px;
+      padding: 52px 42px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(184, 207, 227, 0.72);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      font-family: Arial, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--dusty-blue);
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--ink-blue);
+      font-size: clamp(3.2rem, 8vw, 6.6rem);
+      line-height: 0.98;
+      font-weight: 400;
+    }
+
+    .and {
+      display: block;
+      margin: 10px 0;
+      color: var(--champagne);
+      font-size: 0.48em;
+      font-style: italic;
+    }
+
+    .date-line {
+      margin: 26px 0 10px;
+      font-family: Arial, sans-serif;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .location-line {
+      margin: 0 auto 30px;
+      max-width: 520px;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: var(--ink-blue);
+      color: white;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      border: 1px solid var(--ink-blue);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--ink-blue);
+    }
+
+    main {
+      width: min(1080px, 92vw);
+      margin: 0 auto 90px;
+    }
+
+    section {
+      margin: 34px 0;
+      padding: 54px;
+      background: var(--card);
+      border: 1px solid rgba(184, 207, 227, 0.56);
+      border-radius: 34px;
+      box-shadow: 0 16px 40px rgba(31, 90, 147, 0.08);
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      color: var(--ink-blue);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .section-intro {
+      max-width: 720px;
+      margin: 0 auto 34px;
+      text-align: center;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .detail-card {
+      padding: 26px;
+      background: rgba(248, 250, 247, 0.84);
+      border: 1px solid rgba(184, 207, 227, 0.7);
+      border-radius: 24px;
+      text-align: center;
+    }
+
+    .detail-card h3 {
+      margin: 0 0 8px;
+      color: var(--dusty-blue);
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.76rem;
+    }
+
+    .detail-card p {
+      margin: 0;
+      font-size: 1.12rem;
+    }
+
+    .schedule {
+      max-width: 720px;
+      margin: 0 auto;
+      border-left: 2px solid var(--powder-blue);
+      padding-left: 28px;
+    }
+
+    .schedule-item {
+      position: relative;
+      margin-bottom: 24px;
+      padding: 4px 0 4px 18px;
+    }
+
+    .schedule-item::before {
+      content: "";
+      position: absolute;
+      left: -37px;
+      top: 12px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--ink-blue);
+      border: 4px solid var(--powder-blue);
+    }
+
+    .time {
+      display: block;
+      color: var(--champagne);
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .schedule-item strong {
+      color: var(--ink-blue);
+      font-size: 1.2rem;
+    }
+
+    form {
+      display: grid;
+      gap: 18px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--ink-blue);
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid rgba(125, 151, 170, 0.55);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--text);
+      font: 1rem Arial, sans-serif;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .radio-group {
+      display: grid;
+      gap: 10px;
+      padding: 16px;
+      border: 1px solid rgba(125, 151, 170, 0.38);
+      border-radius: 18px;
+      background: rgba(248, 250, 247, 0.7);
+      font-family: Arial, sans-serif;
+    }
+
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .radio-group input {
+      width: auto;
+    }
+
+    .submit-btn {
+      justify-self: center;
+      cursor: pointer;
+      margin-top: 10px;
+      min-width: 220px;
+    }
+
+    .note {
+      max-width: 760px;
+      margin: 20px auto 0;
+      text-align: center;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.92rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 55px 20px 70px;
+      color: var(--ink-blue);
+      font-size: 1.1rem;
+    }
+
+    .footer .small {
+      margin-top: 8px;
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 800px) {
+      .topbar {
+        gap: 14px;
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+
+      .hero {
+        min-height: 720px;
+        padding-top: 70px;
+        background-size: 740px auto;
+      }
+
+      .hero-card {
+        margin-top: 110px;
+        padding: 38px 24px;
+      }
+
+      section {
+        padding: 34px 22px;
+      }
+
+      .grid,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .qa-section {
+        padding: 58px clamp(24px, 5vw, 66px);
+      }
+
+      .qa-layout {
+        display: grid;
+        grid-template-columns: minmax(240px, 0.85fr) minmax(420px, 1.35fr);
+        gap: 56px;
+        align-items: start;
+      }
+
+      .qa-copy {
+        text-align: left;
+      }
+
+      .qa-label {
+        margin: 0 0 14px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #1f5a93;
+      }
+
+      .qa-copy h2 {
+        margin: 0 0 18px;
+        font-size: clamp(2.25rem, 4vw, 3.4rem);
+        line-height: 1.02;
+        color: #1f5a93;
+      }
+
+      .qa-copy p:not(.qa-label) {
+        max-width: 420px;
+        margin: 0;
+        color: #41515f;
+        line-height: 1.7;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .faq-item {
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(125, 151, 170, 0.28);
+        border-radius: 14px;
+        box-shadow: 0 10px 28px rgba(31, 90, 147, 0.07);
+        overflow: hidden;
+      }
+
+      .faq-item[open] {
+        background: rgba(248, 250, 247, 0.95);
+        border-color: rgba(31, 90, 147, 0.22);
+      }
+
+      .faq-item summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 18px 20px;
+        font-family: inherit;
+        font-size: 0.98rem;
+        font-weight: 700;
+        color: #1f2f3f;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-item p {
+        padding: 0 20px 20px;
+        margin: 0;
+        color: #41515f;
+        font-size: 0.95rem;
+        line-height: 1.65;
+      }
+
+      .faq-icon::before {
+        content: "+";
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #1f5a93;
+        font-size: 1.15rem;
+        font-weight: 400;
+      }
+
+      .faq-item[open] .faq-icon::before {
+        content: "−";
+      }
+
+      /* Phone layout */
+      @media (max-width: 760px) {
+        .qa-section {
+          padding: 46px 22px;
+        }
+
+        .qa-layout {
+          display: block;
+        }
+
+        .qa-copy {
+          text-align: center;
+          margin-bottom: 36px;
+        }
+
+        .qa-copy h2 {
+          font-size: clamp(2rem, 9vw, 3rem);
+        }
+
+        .qa-copy p:not(.qa-label) {
+          max-width: 340px;
+          margin: 0 auto;
+        }
+
+        .faq-list {
+          border: 1px solid rgba(125, 151, 170, 0.25);
+          border-radius: 22px;
+          padding: 14px;
+          background: rgba(255, 255, 255, 0.62);
+          box-shadow: 0 14px 36px rgba(31, 90, 147, 0.08);
+          gap: 0;
+        }
+
+        .faq-item {
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+          background: transparent;
+        }
+
+        .faq-item + .faq-item {
+          border-top: 1px solid rgba(125, 151, 170, 0.16);
+        }
+
+        .faq-item[open] {
+          background: rgba(248, 250, 247, 0.95);
+          border-radius: 12px;
+        }
+
+        .faq-item summary {
+          padding: 18px 14px;
+          font-size: 0.95rem;
+        }
+
+        .faq-item p {
+          padding: 0 14px 18px;
+          font-size: 0.92rem;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="Wedding website navigation">
+    <a href="#details">Details</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#qa">Q&A</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-card">
+      <p class="eyebrow">Together with our families</p>
+      <h1>
+        Your Name
+        <span class="and">&</span>
+        Partner Name
+      </h1>
+      <p class="date-line">October 25, 2026</p>
+      <p class="location-line">Please join us for a joyful celebration.</p>
+      <div class="button-row">
+        <a class="btn" href="#rsvp">RSVP Now</a>
+        <a class="btn secondary" href="#details">View Details</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="details">
+      <h2>Wedding Details</h2>
+      <p class="section-intro">We are so excited to celebrate with you. <br>More details will be shared as the day gets closer.</p>
+      <div class="grid">
+        <div class="detail-card">
+          <h3>Date</h3>
+          <p>Sunday, October 25, 2026</p>
+        </div>
+        <div class="detail-card">
+          <h3>Location</h3>
+          <p>Venue Name<br />City, California</p>
+        </div>
+        <div class="detail-card">
+          <h3>Dress Code</h3>
+          <p>Garden formal / semi-formal<br />Blue tones welcome</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <h2>Schedule</h2>
+      <p class="section-intro">A simple outline for the day. Final timing may be updated closer to the wedding.</p>
+      <div class="schedule">
+        <div class="schedule-item">
+          <span class="time">9:00–9:30 AM</span>
+          <strong>Private family ceremony</strong>
+          <p>Close family ceremony during the auspicious time.</p>
+        </div>
+        <div class="schedule-item">
+          <span class="time">10:00–11:30 AM</span>
+          <strong>Food and photos</strong>
+          <p>Photos and light refreshments with family and friends.</p>
+        </div>
+        <div class="schedule-item">
+          <span class="time">2:00–2:30 PM</span>
+          <strong>Family tradition</strong>
+          <p>Enter grandma’s house ritual during the auspicious time.</p>
+        </div>
+        <div class="schedule-item">
+          <span class="time">Evening</span>
+          <strong>Reception</strong>
+          <p>Dinner, celebration, and memories with our guests.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <h2>RSVP</h2>
+      <p class="section-intro">Please let us know by September 25, 2026.</p>
+
+      <!--
+        RSVP collection option:
+        This form is set up for Netlify Forms. Deploy the folder to Netlify and submissions will appear in your Netlify dashboard.
+        If you use Formspree instead, replace the form action with your Formspree endpoint.
+      -->
+      <form name="wedding-rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="thank-you.html">
+        <input type="hidden" name="form-name" value="wedding-rsvp" />
+        <p style="display:none;">
+          <label>Do not fill this out: <input name="bot-field" /></label>
+        </p>
+
+        <div class="form-row">
+          <div>
+            <label for="full-name">Full name</label>
+            <input id="full-name" name="full_name" type="text" placeholder="Your full name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="name@example.com" required />
+          </div>
+        </div>
+
+        <div>
+          <label>Will you attend?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="attendance" value="Joyfully accepts" required /> Joyfully accepts</label>
+            <label><input type="radio" name="attendance" value="Regretfully declines" /> Regretfully declines</label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label for="guest-count">Number of guests attending</label>
+            <select id="guest-count" name="guest_count" required>
+              <option value="">Select one</option>
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+          <div>
+            <label for="meal">Meal preference</label>
+            <select id="meal" name="meal_preference">
+              <option value="">Select one</option>
+              <option>Chicken</option>
+              <option>Beef</option>
+              <option>Fish</option>
+              <option>Vegetarian</option>
+              <option>Vegan</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="guest-names">Guest name(s)</label>
+          <textarea id="guest-names" name="guest_names" placeholder="Please list the names of everyone included in your RSVP."></textarea>
+        </div>
+
+        <div>
+          <label for="allergies">Dietary restrictions or allergies</label>
+          <textarea id="allergies" name="allergies" placeholder="Please let us know about any allergies or dietary needs."></textarea>
+        </div>
+
+        <div>
+          <label for="message">Message or song request</label>
+          <textarea id="message" name="message" placeholder="Leave us a note or request a song for the reception."></textarea>
+        </div>
+
+        <button class="btn submit-btn" type="submit">Send RSVP</button>
+      </form>
+      <p class="note">Questions? Please contact us at <strong>your-email@example.com</strong>.</p>
+    </section>
+
+    <section id="qa" class="qa-section">
+      <div class="qa-layout">
+
+        <div class="qa-copy">
+          <p class="qa-label">FAQ</p>
+          <h2>Frequently Asked Questions</h2>
+          <p>
+            We compiled a few helpful answers for our wedding day. More details will be added as we get closer to the celebration.
+          </p>
+        </div>
+
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary>
+              <span>When should I RSVP by?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <p>Please RSVP by September 25, 2026 so we can finalize our guest count.</p>
+          </details>
+
+          <details class="faq-item" open>
+            <summary>
+              <span>What is the dress code?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <p>Garden formal or semi-formal. Blue tones are welcome, but not required.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Can I bring a guest?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <p>Please refer to the names listed on your invitation. If you have questions, feel free to contact us.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Will there be parking?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <p>Parking details will be shared closer to the wedding date.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Are children invited?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <p>Please check your invitation for the guests included in your RSVP.</p>
+          </details>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    With love and gratitude
+    <div class="small">Your Name & Partner Name · October 25, 2026</div>
+  </footer>
+</body>
+</html>
