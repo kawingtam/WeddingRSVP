@@ -35,25 +35,32 @@ Uses powder blue, dusty blue, ink blue, soft white, and champagne gold.
 The main page stays clean, while the RSVP form has its own guided experience.
 
 🩵 **Interactive RSVP flow**
+
 Guests answer one question at a time instead of seeing a long form all at once.
 
 🩵 **Conditional RSVP questions**
+
 If a guest accepts, they are asked for guest count, guest names, dietary needs, and a message.
 If a guest declines, they are only asked to leave a message.
 
 🩵 **Guest name fields based on guest count**
+
 If the guest selects 3 attendees, the form shows 3 separate name fields.
 
 🩵 **Dietary needs dropdown**
+
 Guests can choose common dietary restrictions or select “Other” for custom details.
 
 🩵 **Animated accept / decline flow**
+
 The RSVP page includes soft animated feedback after the guest selects accept or decline.
 
 🩵 **Q&A accordion section**
+
 Guests can click each question to expand or hide the answer.
 
 🩵 **Responsive layout**
+
 The website adapts for desktop and mobile screens.
 
 ---
@@ -67,10 +74,15 @@ The main wedding website page.
 Includes:
 
 🩵 Hero section
+
 🩵 Wedding details
+
 🩵 Schedule
+
 🩵 RSVP card linking to the RSVP page
+
 🩵 Q&A accordion
+
 🩵 Developer portfolio footer
 
 ### `rsvp.html`
@@ -80,10 +92,15 @@ The interactive RSVP page.
 Includes:
 
 🩵 Step-by-step RSVP form
+
 🩵 Progress bar
+
 🩵 Conditional questions
+
 🩵 Accept / decline animation
+
 🩵 Final review screen
+
 🩵 Thank-you confirmation screen
 
 ---
@@ -107,9 +124,13 @@ WeddingRSVP
 ## 🛠️ Built With
 
 🩵 HTML
+
 🩵 CSS
+
 🩵 JavaScript
+
 🩵 Font Awesome
+
 🩵 GitHub Pages
 
 ---
@@ -133,8 +154,11 @@ The RSVP form is designed to support Google Sheets through Google Apps Script.
 To connect the form:
 
 🩵 Create a Google Sheet
+
 🩵 Add the RSVP column headers
+
 🩵 Create a Google Apps Script Web App
+
 🩵 Paste the Web App URL into `js/rsvp.js`
 
 In `js/rsvp.js`, update:
@@ -174,8 +198,11 @@ This site can be hosted with GitHub Pages.
 After pushing changes to GitHub:
 
 🩵 Go to the repository settings
+
 🩵 Open Pages settings
+
 🩵 Select the `main` branch
+
 🩵 Save and wait for GitHub Pages to publish the site
 
 ---
@@ -183,9 +210,13 @@ After pushing changes to GitHub:
 ## 📌 Notes
 
 🩵 `README.md` should be kept instead of `README.txt` because GitHub displays Markdown files more nicely.
+
 🩵 The RSVP page does not need a separate `thank-you.html` page because the thank-you screen is built into `rsvp.html`.
+
 🩵 The shared visual styling is stored in `css/styles.css`.
+
 🩵 The main page animation logic is stored in `js/index.js`.
+
 🩵 The RSVP form logic is stored in `js/rsvp.js`.
 
 ---
