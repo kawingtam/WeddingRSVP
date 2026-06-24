@@ -13,9 +13,13 @@ The main page introduces the wedding details, while the RSVP page provides a gui
 The goal of this project is to make the wedding website feel:
 
 🩵 Elegant and simple
+
 🩵 Soft, romantic, and blue-themed
+
 🩵 Easy for guests to navigate
+
 🩵 Mobile-friendly
+
 🩵 More interactive than a traditional RSVP form
 
 ---
@@ -23,9 +27,11 @@ The goal of this project is to make the wedding website feel:
 ## ✨ Features
 
 🩵 **Soft blue wedding design**
+
 Uses powder blue, dusty blue, ink blue, soft white, and champagne gold.
 
 🩵 **Separate RSVP page**
+
 The main page stays clean, while the RSVP form has its own guided experience.
 
 🩵 **Interactive RSVP flow**
